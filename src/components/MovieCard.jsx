@@ -10,7 +10,7 @@ export default function MovieCard({ movie }) {
                     <p className="overview mb-3">
                         {movie.anno}
                     </p>
-                    <Link to={`/books/${movie.id}`} className="btn btn-secondary btn-outline-dark">Read more</Link>
+                    <Link to={`/books/${movie.id}`} className="btn btn-primary btn-outline-white">Read more</Link>
                 </div>
             </div>
         </>
