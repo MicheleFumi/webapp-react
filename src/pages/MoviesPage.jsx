@@ -65,7 +65,6 @@ export default function MoviesPage() {
             anno: 2019
         }
     ];
-
     return (
         <>
             <Jumbotron title='The Movie Forum' subtitle='discover new film, suggested by people' description='Lorem ipsum dolor sit amet consectetur adipisicing elit.' />
