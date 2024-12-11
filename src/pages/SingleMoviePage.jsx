@@ -69,6 +69,18 @@ export default function SingleMoviePage() {
         }
     ];
 
+    const ratingStars = (vote) => {
+        const rating = vote
+        let stars = [];
+        for (let i = 1; i <= 5; i++) {
+            if (i <= rating) {
+                stars.push(<i key={i} className="bi bi-star-fill"></i>);
+            } else {
+                stars.push(<i key={i} className="bi bi-star"></i>);
+            }
+        }
+        return stars;
+    }
 
 
     return (
@@ -77,7 +89,7 @@ export default function SingleMoviePage() {
 
             <section>
                 <div className="container">
-                    {reviews.map(review => <ReviewCard key={review.id} review={review} />
+                    {reviews.map(review => <ReviewCard key={review.id} review={review} ratingStars={ratingStars} />
 
                     )}
                 </div>
