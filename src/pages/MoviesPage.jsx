@@ -67,18 +67,8 @@ export default function MoviesPage() {
          }
      ]; */
 
-    const { movieDataApi, loading, error } = useContext(MovieContext);
+    const { movieDataApi } = useContext(MovieContext);
     console.log(movieDataApi);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Errore: {error}</div>;
-    }
-
-
 
 
     return (

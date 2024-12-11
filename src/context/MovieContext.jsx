@@ -10,30 +10,23 @@ export default function MovieProvider({ children }) {
     const endpoint = 'api/movies/'
     function fetchMovieData() {
         fetch(`${url}${endpoint}`)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`Errore HTTP: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setMovieDataApi(data);
-            })
-            .catch((err) => {
-                setError(err.message);
-                console.error("Errore nel fetch:", err);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data);
 
+                setMovieDataApi(data)
+
+
+
+            }
+            )
+    }
 
     useEffect(fetchMovieData, [])
 
     console.log("MovieProvider rendering, movieDataApi:", movieDataApi)
     return (
-        <MovieContext.Provider value={{ movieDataApi, loading, error }}>
+        <MovieContext.Provider value={{ movieDataApi }}>
             {children}
         </MovieContext.Provider>
     );
