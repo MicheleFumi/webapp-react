@@ -20,6 +20,8 @@ export default function MovieProvider({ children }) {
     }
 
     useEffect(fetchMovieData, [])
+
+    console.log("MovieProvider rendering, movieDataApi:", movieDataApi)
     return (
         <MovieContext.Provider value={{ movieDataApi }}>
             {children}
