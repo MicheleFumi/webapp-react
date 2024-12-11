@@ -4,6 +4,7 @@ import AppLayout from './layout/AppLayout'
 import MoviesPage from './pages/MoviesPage'
 import SingleMoviePage from './pages/SingleMoviePage'
 
+
 import MovieProvider from './context/MovieContext'
 
 function App() {
