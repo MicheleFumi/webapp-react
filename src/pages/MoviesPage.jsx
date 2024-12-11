@@ -4,6 +4,7 @@ import Jumbotron from "../components/Jumbotron";
 import MovieCard from "../components/MovieCard";
 
 export default function MoviesPage() {
+
     /*  const movies = [
          {
              id: 1,
@@ -79,7 +80,7 @@ export default function MoviesPage() {
                     <h2 className="pb-3">Movie Overview</h2>
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
 
-                        {movieDataApi.map(movie => (
+                        {movieDataApi.movies.map(movie => (
                             <div className="col" key={movie.id}>
                                 <MovieCard movie={movie} />
                             </div>
