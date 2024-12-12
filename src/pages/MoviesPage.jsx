@@ -1,7 +1,7 @@
-import { useContext } from "react";
-import MovieContext from "../context/MovieContext";
+
 import Jumbotron from "../components/Jumbotron";
 import MovieCard from "../components/MovieCard";
+import { useMovieProvider } from "../context/MovieContext";
 
 export default function MoviesPage() {
 
@@ -68,9 +68,8 @@ export default function MoviesPage() {
          }
      ]; */
 
-    const { movieDataApi } = useContext(MovieContext);
+    const { movieDataApi } = useMovieProvider()
     console.log(movieDataApi);
-
 
     return (
         <>
@@ -80,11 +79,15 @@ export default function MoviesPage() {
                     <h2 className="pb-3">Movie Overview</h2>
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
 
-                        {movieDataApi.movies.map(movie => (
-                            <div className="col" key={movie.id}>
-                                <MovieCard movie={movie} />
-                            </div>
-                        ))}
+                        {movieDataApi?.length > 0 ? (
+                            movieDataApi.map(movie => (
+                                <div className="col" key={movie.id || movie.title}>
+                                    <MovieCard movie={movie} />
+                                </div>
+                            ))
+                        ) : (
+                            <p>Caricamento in corso o nessun film disponibile.</p>
+                        )}
 
                     </div>
                 </div>
