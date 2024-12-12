@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 const MovieContext = createContext()
 
 export default function MovieProvider({ children }) {
-    const [movieDataApi, setMovieDataApi] = useState({})
+    const [movieDataApi, setMovieDataApi] = useState([])
     const [reviews, setReviews] = useState({})
     const url = 'http://localhost:3001/'
     const endpoint = 'api/movies/'

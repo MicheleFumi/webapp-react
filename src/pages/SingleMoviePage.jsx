@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import Jumbotron from "../components/Jumbotron";
 import ReviewCard from "../components/ReviewCard";
 import { useMovieProvider } from "../context/MovieContext";
@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export default function SingleMoviePage() {
 
     const { reviews, movieReview, movieDataApi } = useMovieProvider()
-    console.log(reviews);
+
     const { id } = useParams()
 
     useEffect(() => {
@@ -15,6 +15,7 @@ export default function SingleMoviePage() {
             movieReview(id);
         }
     }, [id])
+
 
     /*  const reviews = [
          {
@@ -93,9 +94,18 @@ export default function SingleMoviePage() {
     }
 
 
+    const movie = movieDataApi.find(movie => movie.id == id)
+
+
     return (
         <>
-            <Jumbotron title='The Movie Forum' subtitle='discover new film, suggested by people' description='discover what people says about.' />
+
+            {movie ? (
+                <Jumbotron title={movie.title} subtitle={`${movie.director}, ${movie.release_year}`} description={movie.abstract} movie_category={movie.genre} />
+            ) : (
+                <p>Film non trovato.</p>
+            )}
+
 
             <section>
                 <div className="container">
@@ -107,7 +117,11 @@ export default function SingleMoviePage() {
                         <p>Caricamento in corso o nessun film disponibile.</p>
                     )}
 
+                    <NavLink to="/" className="btn btn-primary btn-outline-white">
+                        <i class="bi bi-arrow-left"></i>
+                        <span> back to movie list</span>
 
+                    </NavLink>
                 </div>
             </section>
 
