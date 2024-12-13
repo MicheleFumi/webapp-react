@@ -1,13 +1,14 @@
 
 import { useParams } from "react-router-dom";
 import { useMovieProvider } from "../context/MovieContext";
+import { useState } from "react";
 
 
 
 export default function ReviewForm() {
     const { id } = useParams()
     const { addReview, username, text, vote, setUsername, setText, setVote, errorMessage } = useMovieProvider()
-
+    const [isFormVisible, setIsFormVisible] = useState(false);
     function HandleFormSubmit(e) {
         e.preventDefault()
         console.log('here');
@@ -17,19 +18,22 @@ export default function ReviewForm() {
 
     }
     function HandleFormToggle() {
+        setIsFormVisible(prevState => !prevState);
 
-        document.getElementById('form-card').classList.toggle('d-none')
     }
 
 
     return (
         <div className="container">
 
-            <button onClick={HandleFormToggle} className="btn btn-primary mb-3"> add a review </button>
-            <div id="form-card" className="card mb-3 ">
+            <button onClick={HandleFormToggle} className="btn btn-primary mb-3">
+                {isFormVisible ? "Hide Review Form" : "Add a Review"}
+            </button>
+
+            <div id="form-card" className={`card mb-3 ${isFormVisible ? "d-block" : "d-none"}`}>
 
                 <div className="card-body">
-                    <h3>Add A New Review</h3>
+
                     <form onSubmit={HandleFormSubmit}>
 
                         <div className="mb-3">
