@@ -11,14 +11,14 @@ export default function ReviewForm() {
     const [isFormVisible, setIsFormVisible] = useState(false);
     function HandleFormSubmit(e) {
         e.preventDefault()
-        console.log('here');
+
 
         addReview(id);
 
 
     }
     function HandleFormToggle() {
-        setIsFormVisible(prevState => !prevState);
+        setIsFormVisible(isVisible => !isVisible);
 
     }
 
