@@ -15,14 +15,17 @@ export default function ReviewForm() {
         addReview(id);
 
     }
-
+    function HandleFormToggle() {
+        document.getElementById('form-card').classList.toggle('d-none')
+    }
 
 
 
     return (
         <div className="container">
             <h3>Add A New Review</h3>
-            <div className=" card mb-3">
+            <button onClick={HandleFormToggle} className="btn btn-primary mb-3"> + ADD</button>
+            <div id="form-card" className="card mb-3">
                 <div className="card-body">
                     <form onSubmit={HandleFormSubmit}>
 
