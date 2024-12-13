@@ -23,6 +23,7 @@ export default function MovieProvider({ children }) {
             }
             )
     }
+
     function movieReview(id) {
         const reviewEndpoint = `api/movies/${id}`
         fetch(`${url}${reviewEndpoint}`)
@@ -38,6 +39,8 @@ export default function MovieProvider({ children }) {
             )
 
     }
+
+
 
 
 
