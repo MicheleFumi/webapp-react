@@ -65,7 +65,7 @@ export default function SingleMoviePage() {
                     )}
 
                     <NavLink to="/" className="btn btn-primary btn-outline-white">
-                        <i class="bi bi-arrow-left"></i>
+                        <i className="bi bi-arrow-left"></i>
                         <span> back to movie list</span>
 
                     </NavLink>
