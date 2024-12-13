@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useMovieProvider } from "../context/MovieContext";
 
 
+
 export default function ReviewForm() {
     const { id } = useParams()
     const { addReview, username, text, vote, setUsername, setText, setVote } = useMovieProvider()
@@ -10,7 +11,7 @@ export default function ReviewForm() {
     function HandleFormSubmit(e) {
         e.preventDefault()
         console.log('here');
-        console.log('Username:', username);
+
         addReview(id);
 
     }

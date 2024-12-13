@@ -54,7 +54,7 @@ export default function MovieProvider({ children }) {
             text,
             vote,
         }
-        console.log('Form data being sent:', formData);
+
         fetch(`${url}${endpoint}${id}/review`, {
             method: 'POST',
             body: JSON.stringify(formData),
@@ -64,6 +64,7 @@ export default function MovieProvider({ children }) {
         }).then(res => res.json())
             .then(data => {
                 console.log(data);
+                movieReview(id);
             })
             .catch(err => console.log(err))
 
@@ -81,6 +82,7 @@ export default function MovieProvider({ children }) {
 
     useEffect(() => {
         fetchMovieData()
+
 
     }, [])
 
