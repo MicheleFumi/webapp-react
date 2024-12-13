@@ -8,6 +8,7 @@ export default function MovieProvider({ children }) {
     const [username, setUsername] = useState('')
     const [text, setText] = useState('')
     const [vote, setVote] = useState(0)
+    const [errorMessage, setErrorMessage] = useState(null)
 
     const url = 'http://localhost:3001/'
     const endpoint = 'api/movies/'
@@ -54,7 +55,13 @@ export default function MovieProvider({ children }) {
             text,
             vote,
         }
+        if (username.length < 5 || text.length < 15 || vote == 0) {
+            setErrorMessage('Please fill all the fields')
+            return;
 
+        } else {
+            setErrorMessage(null)
+        }
         fetch(`${url}${endpoint}${id}/review`, {
             method: 'POST',
             body: JSON.stringify(formData),
@@ -65,6 +72,8 @@ export default function MovieProvider({ children }) {
             .then(data => {
                 console.log(data);
                 movieReview(id);
+
+
             })
             .catch(err => console.log(err))
 
@@ -92,7 +101,7 @@ export default function MovieProvider({ children }) {
 
     return (
         <MovieContext.Provider value={{
-            movieDataApi, reviews, movieReview, addReview, username, text, vote, setUsername, setText, setVote
+            movieDataApi, reviews, movieReview, addReview, username, text, vote, setUsername, setText, setVote, errorMessage,
         }}>
             {children}
         </MovieContext.Provider>

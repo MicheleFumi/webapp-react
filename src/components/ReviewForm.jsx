@@ -6,7 +6,7 @@ import { useMovieProvider } from "../context/MovieContext";
 
 export default function ReviewForm() {
     const { id } = useParams()
-    const { addReview, username, text, vote, setUsername, setText, setVote } = useMovieProvider()
+    const { addReview, username, text, vote, setUsername, setText, setVote, errorMessage } = useMovieProvider()
 
     function HandleFormSubmit(e) {
         e.preventDefault()
@@ -14,19 +14,22 @@ export default function ReviewForm() {
 
         addReview(id);
 
+
     }
     function HandleFormToggle() {
+
         document.getElementById('form-card').classList.toggle('d-none')
     }
 
 
-
     return (
         <div className="container">
-            <h3>Add A New Review</h3>
-            <button onClick={HandleFormToggle} className="btn btn-primary mb-3"> + ADD</button>
-            <div id="form-card" className="card mb-3">
+
+            <button onClick={HandleFormToggle} className="btn btn-primary mb-3"> add a review </button>
+            <div id="form-card" className="card mb-3 ">
+
                 <div className="card-body">
+                    <h3>Add A New Review</h3>
                     <form onSubmit={HandleFormSubmit}>
 
                         <div className="mb-3">
@@ -45,7 +48,7 @@ export default function ReviewForm() {
 
                         <div className="mb-3">
                             <button type="submit" className="btn btn-primary">Send</button>
-
+                            {errorMessage && <span className="text-danger"> <i className="bi bi-x"></i> {errorMessage}</span>}
                         </div>
                     </form>
 
