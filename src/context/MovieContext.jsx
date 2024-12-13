@@ -98,5 +98,4 @@ export default function MovieProvider({ children }) {
         </MovieContext.Provider>
     );
 }
-
 export const useMovieProvider = () => useContext(MovieContext)
