@@ -9,6 +9,7 @@ export default function MovieProvider({ children }) {
     const [text, setText] = useState('')
     const [vote, setVote] = useState(0)
     const [errorMessage, setErrorMessage] = useState(null)
+    const [loading, setLoading] = useState(null)
 
     const url = 'http://localhost:3001/'
     const endpoint = 'api/movies/'
@@ -17,35 +18,29 @@ export default function MovieProvider({ children }) {
 
 
     function fetchMovieData() {
+
+        setLoading(true);
         fetch(`${url}${endpoint}`)
             .then(resp => resp.json())
             .then(data => {
-
-
                 setMovieDataApi(data.movies)
-
-
-
+                setLoading(false)
             }
             )
     }
 
     function movieReview(id) {
+        setLoading(true);
         const reviewEndpoint = `api/movies/${id}`
         fetch(`${url}${reviewEndpoint}`)
             .then(resp => resp.json())
             .then(data => {
-
-
                 setReviews(data.reviews)
-
-
-
+                setLoading(false)
             }
             )
 
     }
-
 
     function addReview(id) {
 
@@ -101,7 +96,7 @@ export default function MovieProvider({ children }) {
 
     return (
         <MovieContext.Provider value={{
-            movieDataApi, reviews, movieReview, addReview, username, text, vote, setUsername, setText, setVote, errorMessage,
+            movieDataApi, reviews, movieReview, addReview, username, text, vote, setUsername, setText, setVote, errorMessage, loading
         }}>
             {children}
         </MovieContext.Provider>

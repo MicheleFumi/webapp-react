@@ -6,8 +6,10 @@ import { useState } from "react";
 
 
 export default function ReviewForm() {
+
     const { id } = useParams()
-    const { addReview, username, text, vote, setUsername, setText, setVote, errorMessage } = useMovieProvider()
+    const { addReview, username, text, vote, setUsername, setText, setVote, errorMessage, } = useMovieProvider()
+
     const [isFormVisible, setIsFormVisible] = useState(false);
     function HandleFormSubmit(e) {
         e.preventDefault()

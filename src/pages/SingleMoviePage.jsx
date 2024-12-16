@@ -4,13 +4,15 @@ import ReviewCard from "../components/ReviewCard";
 import { useMovieProvider } from "../context/MovieContext";
 import { useEffect } from "react";
 import ReviewForm from "../components/ReviewForm";
+import Loader from "../components/loader";
 
 
 export default function SingleMoviePage() {
 
-    const { reviews, movieReview, movieDataApi } = useMovieProvider()
+    const { reviews, movieReview, movieDataApi, loading } = useMovieProvider()
 
     const { id } = useParams()
+
 
     useEffect(() => {
         if (id) {
@@ -18,8 +20,9 @@ export default function SingleMoviePage() {
         }
     }, [id])
 
-
-
+    if (loading) {
+        return <Loader />;
+    }
     const ratingStars = (vote) => {
         const rating = vote
         let stars = [];
