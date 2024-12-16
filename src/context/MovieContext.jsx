@@ -25,8 +25,10 @@ export default function MovieProvider({ children }) {
             .then(data => {
                 setMovieDataApi(data.movies)
                 setLoading(false)
+
             }
             )
+
     }
 
     function movieReview(id) {
@@ -85,8 +87,8 @@ export default function MovieProvider({ children }) {
 
 
     useEffect(() => {
-        fetchMovieData()
 
+        fetchMovieData()
 
     }, [])
 
